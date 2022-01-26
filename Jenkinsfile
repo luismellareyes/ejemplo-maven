@@ -98,7 +98,7 @@ pipeline {
                sh "curl -X GET 'http://localhost:8085/rest/mscovid/test?msg=testing'"
             }
         }
-        stage('Paso 5: Subir a Nexus') {
+        stage('Paso 10: Subir a Nexus 1.0.0') {
             steps {
                 //archiveArtifacts artifacts:'build/*.jar'
                 nexusPublisher nexusInstanceId: 'nexus',
