@@ -58,7 +58,7 @@ pipeline {
             steps {
                 //archiveArtifacts artifacts:'build/*.jar'
                 nexusPublisher nexusInstanceId: 'nexus',
-                nexusRepositoryId: 'devops-usach',
+                nexusRepositoryId: 'grupo-4',
                     packages: [
                     [$class: 'MavenPackage',
                        mavenAssetList: [
