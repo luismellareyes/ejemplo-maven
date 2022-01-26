@@ -91,6 +91,7 @@ pipeline {
         stage('Paso 8: Dormir(Esperar 60sg, que levante sprint boot) ') {
             steps {
                 //sh 'sleep 60'
+                sh 'pwd'
             }
         }
         stage("Paso 9: Curl"){
