@@ -24,7 +24,7 @@ pipeline {
                 script {
                     sh "echo 'Test Code!'"
                     // Run Maven on a Unix agent.
-                    sh 'mvn clean test -e'
+                   // sh 'mvn clean test -e'
                 }
             }
         }
@@ -33,7 +33,7 @@ pipeline {
                 script {
                     sh "echo 'Build .Jar!'"
                     // Run Maven on a Unix agent.
-                    sh 'mvn clean package -e'
+                    //sh 'mvn clean package -e'
                 }
             }
             post {
@@ -48,7 +48,7 @@ pipeline {
                 withSonarQubeEnv('sonarqube') {
                     sh "echo 'Calling sonar Service in another docker container!'"
                     // Run Maven on a Unix agent to execute Sonar.
-                    sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=github-sonar'
+                    //sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=github-sonar'
                    // sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=github-sonar -Dsonar.host.url=https://sonarqube.planeta0.com'
                 }
             }
@@ -85,12 +85,12 @@ pipeline {
         }
         stage(" Paso 7: Levantar Springboot APP"){
             steps {
-               sh 'nohup java -jar DevOpsUsach2020-0.0.3.jar & >/dev/null'
+               //sh 'nohup java -jar DevOpsUsach2020-0.0.3.jar & >/dev/null'
             }
         }
         stage('Paso 8: Dormir(Esperar 60sg, que levante sprint boot) ') {
             steps {
-                sh 'sleep 60'
+                //sh 'sleep 60'
             }
         }
         stage("Paso 9: Curl"){
@@ -98,9 +98,8 @@ pipeline {
                sh "curl -X GET 'http://localhost:8085/rest/mscovid/test?msg=testing'"
             }
         }
-        stage("Paso 10: subir version 1.0.0"){
-             steps {
-          steps {
+        stage('Paso 5: Subir a Nexus') {
+            steps {
                 //archiveArtifacts artifacts:'build/*.jar'
                 nexusPublisher nexusInstanceId: 'nexus',
                 nexusRepositoryId: 'devops-usach',
@@ -119,7 +118,6 @@ pipeline {
                     ]
                     ]
             }
-             }
         }
 
     }
