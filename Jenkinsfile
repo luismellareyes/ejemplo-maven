@@ -85,13 +85,15 @@ pipeline {
         }
         stage(" Paso 7: Levantar Springboot APP"){
             steps {
+                sh "echo 'fase ejecutar'"
                //sh 'nohup java -jar DevOpsUsach2020-0.0.3.jar & >/dev/null'
             }
         }
         stage('Paso 8: Dormir(Esperar 60sg, que levante sprint boot) ') {
             steps {
+                sh "echo 'fase dormir'"
                 //sh 'sleep 60'
-                sh 'pwd'
+
             }
         }
         stage("Paso 9: Curl"){
