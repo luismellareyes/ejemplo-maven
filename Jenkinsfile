@@ -98,6 +98,30 @@ pipeline {
                sh "curl -X GET 'http://localhost:8085/rest/mscovid/test?msg=testing'"
             }
         }
+        stage("Paso 10: subir version 1.0.0"){
+             steps {
+          steps {
+                //archiveArtifacts artifacts:'build/*.jar'
+                nexusPublisher nexusInstanceId: 'nexus',
+                nexusRepositoryId: 'devops-usach',
+                    packages: [
+                    [$class: 'MavenPackage',
+                       mavenAssetList: [
+                            [classifier: '',
+                            extension: 'jar',
+                            filePath: 'build/DevOpsUsach2020-0.0.1.jar']
+                            ],
+                        mavenCoordinate: [
+                            artifactId: 'DevOpsUsach2020',
+                            groupId: 'com.devopsusach2020',
+                            packaging: 'jar',
+                            version: '1.0.0']
+                    ]
+                    ]
+            }
+             }
+        }
+
     }
     post {
         always {
