@@ -57,33 +57,9 @@ pipeline {
         stage('Paso 5: Subir a Nexus') {
             steps {
                 //archiveArtifacts artifacts:'build/*.jar'
-                nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'grupo-4', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: 'build/DevOpsUsach2020-0.0.1.jar', extension: 'jar', filePath: '']], mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'jar', version: '0.0.1']]]
+                nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'grupo-4', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: 'jar', filePath: 'build/DevOpsUsach2020-0.0.1.jar']], mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'jar', version: '0.0.1']]]
 /*
-                nexusPublisher nexusInstanceId: 'nexus',
-                nexusRepositoryId: 'grupo-4',
-                    packages: [
-                        [
-                        $class: 'MavenPackage',
-                        mavenAssetList: [],
-                        mavenCoordinate: [
-                            artifactId: 'DevOpsUsach2020',
-                            groupId: 'com.devopsusach2020',
-                             packaging: 'jar',
-                              version: '0.0.1'
-                              ]
-                          ]
-                    ]
-
-                nexusPublisher nexusInstanceId: 'nexus',
-                nexusRepositoryId: 'grupo-4',
-                    packages: [
-                    [$class: 'MavenPackage',
-                       mavenAssetList: [
-                            [classifier: '',
-                            extension: 'jar',
-                            filePath: 'build/DevOpsUsach2020-0.0.1.jar']
-                            ],
-                        mavenCoordinate: [
+                nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'grupo-4', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '',extension: 'jar',filePath: 'build/DevOpsUsach2020-0.0.1.jar']],mavenCoordinate: [
                             artifactId: 'DevOpsUsach2020',
                             groupId: 'com.devopsusach2020',
                             packaging: 'jar',
