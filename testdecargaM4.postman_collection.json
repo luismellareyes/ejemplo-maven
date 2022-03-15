@@ -1,0 +1,53 @@
+{
+	"info": {
+		"_postman_id": "247def61-4507-465c-a346-1525c0d06740",
+		"name": "testdecargaM4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8081/rest/mscovid/test?msg=usach2021",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\",function(){",
+							"    pm.response.to.have.status(200)",
+							"});",
+							"",
+							"pm.test(\"REsponse time is less than 1500ms\",()=>{",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/rest/mscovid/test?msg=usach2021",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"rest",
+						"mscovid",
+						"test"
+					],
+					"query": [
+						{
+							"key": "msg",
+							"value": "usach2021"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
